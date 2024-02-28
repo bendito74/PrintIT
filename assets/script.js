@@ -44,4 +44,8 @@ ArrowLeft.addEventListener("click", function() {
 
 ArrowRight.addEventListener("click", function() {
     console.log("Flèche droite cliquée");
+	// Incrémenter l'index du slide actif
+    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+    // Afficher le nouveau slide
+    showSlide(currentSlideIndex);
 });
