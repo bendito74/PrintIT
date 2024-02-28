@@ -37,19 +37,11 @@ function showSlide(index) {
     dots[index].classList.add("dot_selected");
 }
 
-// Ajout d'un écouteur d'événement pour le clic sur la flèche droite
-ArrowRight.addEventListener("click", function() {
-    // Incrémenter l'index du slide actif
-    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-    // Afficher le nouveau slide
-    showSlide(currentSlideIndex);
-});
-
-// Ajout d'un écouteur d'événement pour le clic sur la flèche gauche
+// Ajout d'écouteurs d'événements pour détecter les clics sur les flèches
 ArrowLeft.addEventListener("click", function() {
-    // Décrémenter l'index du slide actif
-    currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
-    // Afficher le nouveau slide
-    showSlide(currentSlideIndex);
+    console.log("Flèche gauche cliquée");
 });
 
+ArrowRight.addEventListener("click", function() {
+    console.log("Flèche droite cliquée");
+});
