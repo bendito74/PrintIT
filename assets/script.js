@@ -40,6 +40,10 @@ function showSlide(index) {
 // Ajout d'écouteurs d'événements pour détecter les clics sur les flèches
 ArrowLeft.addEventListener("click", function() {
     console.log("Flèche gauche cliquée");
+	// Décrémenter l'index du slide actif
+    currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+    // Afficher le nouveau slide
+    showSlide(currentSlideIndex);
 });
 
 ArrowRight.addEventListener("click", function() {
