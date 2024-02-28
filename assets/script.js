@@ -17,17 +17,39 @@ const slides = [
 	}
 ]
 
-//Appel des flèches gauche droite
+// Récupération des éléments du DOM
 let ArrowLeft = document.querySelector(".arrow_left");
-console.log(ArrowLeft);
 let ArrowRight = document.querySelector(".arrow_right");
-console.log(ArrowRight);
+let bannerImg = document.querySelector(".banner-img");
+let bannerText = document.querySelector("#banner p");
+let dots = document.querySelectorAll(".dot");
 
-// Ajout d'écouteurs d'événements pour détecter les clics sur les flèches
-ArrowLeft.addEventListener("click", function() {
-    console.log("Flèche gauche cliquée");
-});
+// Variable pour suivre l'index du slide actuel
+let currentSlideIndex = 0;
 
+// Fonction pour afficher le slide actif
+function showSlide(index) {
+    bannerImg.src = "./assets/images/slideshow/" + slides[index].image;
+    bannerText.innerHTML = slides[index].tagLine;
+    // Supprimer la classe "dot_selected" de tous les dots
+    dots.forEach(dot => dot.classList.remove("dot_selected"));
+    // Ajouter la classe "dot_selected" au dot correspondant à l'index
+    dots[index].classList.add("dot_selected");
+}
+
+// Ajout d'un écouteur d'événement pour le clic sur la flèche droite
 ArrowRight.addEventListener("click", function() {
-    console.log("Flèche droite cliquée");
+    // Incrémenter l'index du slide actif
+    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+    // Afficher le nouveau slide
+    showSlide(currentSlideIndex);
 });
+
+// Ajout d'un écouteur d'événement pour le clic sur la flèche gauche
+ArrowLeft.addEventListener("click", function() {
+    // Décrémenter l'index du slide actif
+    currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+    // Afficher le nouveau slide
+    showSlide(currentSlideIndex);
+});
+
